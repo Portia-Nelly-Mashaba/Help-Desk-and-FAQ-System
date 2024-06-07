@@ -5,13 +5,13 @@ use Illuminate\Support\Facades\Session;
 
 @section('content')
           <!--main content start-->
-       
-          
+
+
     <section id="main-content">
         <section class="wrapper">
           <div class="row">
             <div class="col-lg-12">
-              <h3 class="page-header"><i class="fa fa-edit"></i>Add Category</h3>
+              <h3 class="page-header"><i class="fa fa-edit"></i>Add  new Category</h3>
               <ol class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="/dashboard/home">Home</a></li>
                 <li><i class="fa fa-question"></i>Category</li>
@@ -34,32 +34,46 @@ use Illuminate\Support\Facades\Session;
 
       <p class="alert
       {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('message') }}</p>
-      
+
       @endif
       <form  method="POST" action="{{ route('category.store')}}" >
           @csrf
-      
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Category Name</label>
-          <div class="col-lg-10">
-          <input name="title" class="form-control" value=""/>
-          </div>
+
+          <div class="form-group">
+            <label for="title">Category Title</label>
+            <input name="title" type="text" class="form-control" />
+            @error('title')
+                <p class="alert alert-danger">{{ $message }}</p>
+            @enderror
         </div>
 
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Category Name</label>
-            <div class="col-lg-10">
-            <input type="file" name="image" class="form-control" />
+                <div class="form-group">
+                    <label for="image">Category Image</label>
+                    <input name="image" type="file" class="form-control" name="post-image" />
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 form-control"> Category Description</label>
+                    <textarea
+                    class="form-control"
+                    name="desc"
+                    id=""
+                    rows="10"
+                    required
+                    ></textarea>
+                    @error('title')
+                <p class="alert alert-danger">{{ $message }}</p>
+            @enderror
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
+                    Create post
+                </button>
+                <button type="reset" class="btn btn-danger mt-2 mb-lg-5">Reset</button>
+                </form>
+                <div></div>
+
             </div>
-          </div>
-    
-        <div class="form-group">
-          <div class="col-lg-offset-2 col-lg-10">
-            <button type="submit" class="btn btn-success">Add</button>
-            <a href="/dashboard/home" class="btn btn-danger">Cancel</a>
-          </div>
-        </div>
-      </form>
+              </form>
     </div>
   </section>
 </div>
@@ -68,5 +82,5 @@ use Illuminate\Support\Facades\Session;
         </section>
       </section>
       <!--main content end-->
-      
+
 @endsection

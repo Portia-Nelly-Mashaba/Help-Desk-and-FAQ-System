@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -20,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.add_category'); 
+        return view('admin.category.add_category');
     }
 
     /**
@@ -28,7 +29,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $request->validate([
+            'title' => 'required|max:255|string',
+            'desc' => 'required',
+        ]);
+
+        $category = new Category;
+        $category->title = $request->title;
+        $category->desc = $request->desc;
+        $category->user_id = auth()->id();
+        $category->image = "jhiyhufuhuitghgbhihu";
+        $category->save();
+        return back();
+
+
     }
 
     /**

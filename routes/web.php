@@ -24,17 +24,17 @@ Route::get('/', function () {
 //     return view('forum_user.category');
 // });
 
-// Route::get('/newpost', function () {
-//     return view('forum_user.new_post');
-// });
+Route::get('/newpost', function () {
+    return view('forum_user.new_post');
+});
 
-// Route::get('/view', function () {
-//     return view('forum_user.post_overview');
-// });
+Route::get('/view', function () {
+    return view('forum_user.post_overview');
+});
 
-// Route::get('/post', function () {
-//     return view('forum_user.post');
-// });
+Route::get('/post', function () {
+       return view('forum_user.post');
+ });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
