@@ -37,14 +37,18 @@ class CategoryController extends Controller
         $request->validate([
             'title' => 'required|max:255|string',
             'desc' => 'required',
-            'image' => 'required',
         ]);
+        $image =$request->image;
+        $name =$image->getClientOriginalName();
+        $new_name = tiime().$name;
+        $dir = "storage/images/categories";
+        $image->move($dir, $new_name);
 
         $category = new Category;
         $category->title = $request->title;
         $category->desc = $request->desc;
         $category->user_id = auth()->id();
-        $category->image = "jhiyhufuhuitghgbhihu";
+        $category->image = "$new_name";
         $category->save();
         Session::flash('message', 'Category Created Successful');
         Session::flash('alert-class', 'alert-success');
@@ -56,9 +60,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $category = Category::find($id);
+        //dd($category);
+        return view('admin.category.view_category', compact('category'));
     }
 
     /**

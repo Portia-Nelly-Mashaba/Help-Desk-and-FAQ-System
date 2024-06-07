@@ -29,37 +29,16 @@
                   </div>
                 </div>
                 <div class="panel-body">
-                  <table class="table bootstrap-datatable countries">
-                    <thead>
-                      <tr>
-                        <th>Title</th>
-                        <th>Image</th>
-                        <th>Description</th>
-                        <th>View</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <h4>{{ $category->title }}</h4>
+                            <img src="{{ asset('storage/images/categories/'.$category->image)}}" height="100" width="100" alt="Category image">
+                            <p>{{$category->desc }}</p>
 
-                      </tr>
-                    </thead>
-                    <tbody>
-                        @if (count($categories)> 0)
-                            @foreach ($categories as $category)
-                            <tr>
-                                <td>{{$category->title}}</td>
-                                <td>{{ asset('storage/images/categories/'.$category->image) }}</td>
-                                <td>{{$category->desc}}</td>
-                                {{-- <td>{!!$category->desc!!}</td> --}}
-                                {{-- <td>{{ $category->user->name }}</td> --}}
-                                <td><a href="{{ route('category.show', $category->id)}}" class="text-success">View</a></td>
-                                <td><a href="#">Edit</a></td>
-                                <td><a href="#" class="text-danger">Delete</a></td>
-
-                              </tr>
-                            @endforeach
-                        @endif
-                    </tbody>
-                  </table>
-
+                        </div>
+                    </div>
+                  </div>
                   {{-- {{ $users->links() }} --}}
                 </div>
 

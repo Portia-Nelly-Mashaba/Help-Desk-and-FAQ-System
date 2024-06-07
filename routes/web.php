@@ -53,4 +53,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'create'])->name('category.create');
     Route::post('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'store'])->name('category.store');
     Route::get('/dashboard/categories', [App\Http\Controllers\admin\CategoryController::class, 'index'])->name('categories');
+    Route::get('/dashboard/categories/{id}', [App\Http\Controllers\admin\CategoryController::class, 'show'])->name('category.show');
 });
