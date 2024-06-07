@@ -40,37 +40,52 @@ use Illuminate\Support\Facades\Session;
           @csrf
 
           <div class="form-group">
-            <label for="title">Category Title</label>
+            <label class="col-lg-2" for="title">Category Title</label>
+            <div class="col-lg-10">
             <input name="title" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-10">
             @error('title')
                 <p class="alert alert-danger">{{ $message }}</p>
             @enderror
         </div>
 
-                <div class="form-group">
-                    <label for="image">Category Image</label>
-                    <input name="image" type="file" class="form-control" name="post-image" />
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-2 form-control"> Category Description</label>
-                    <textarea
-                    class="form-control"
-                    name="desc"
-                    id=""
-                    rows="10"
-                    required
-                    ></textarea>
-                    @error('title')
+        <div class="form-group">
+            <label class="col-lg-2" for="image">Category Image</label>
+            <div class="col-lg-10">
+            <input name="image" type="file" class="form-control" name="post-image" />
+            </div>
+        </div>
+        <div class="col-lg-10">
+            @error('image')
                 <p class="alert alert-danger">{{ $message }}</p>
             @enderror
-                </div>
+        </div>
+        
 
-                <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
-                    Create post
-                </button>
-                <button type="reset" class="btn btn-danger mt-2 mb-lg-5">Reset</button>
-                </form>
-                <div></div>
+        <div class="form-group">
+            <label class="col-lg-2" form-control"> Category Description</label>
+            <div class="col-lg-10">
+            <textarea
+            class="form-control"
+            name="desc">
+            </textarea>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            @error('desc')
+                <p class="alert alert-danger">{{ $message }}</p>
+            @enderror
+        </div>
+            
+        
+        <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
+            Add
+        </button>
+        <button type="reset" class="btn btn-danger mt-2 mb-lg-5">Reset</button>
+        </form>
+        <div></div>
 
             </div>
               </form>

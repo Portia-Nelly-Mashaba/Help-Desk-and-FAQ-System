@@ -50,6 +50,7 @@ require __DIR__.'/auth.php';
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard/home', [App\Http\Controllers\admin\PanelDashboard::class, 'home']);
-    Route::get('/dashboard/category/new', [App\Http\Controllers\admin\CategoryController::class, 'create'])->name('category.new');
-    Route::post('/dashboard/category/new', [App\Http\Controllers\admin\CategoryController::class, 'store'])->name('category.store');
+    Route::get('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'create'])->name('category.create');
+    Route::post('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'store'])->name('category.store');
+    Route::get('/dashboard/categories', [App\Http\Controllers\admin\CategoryController::class, 'index'])->name('categories');
 });

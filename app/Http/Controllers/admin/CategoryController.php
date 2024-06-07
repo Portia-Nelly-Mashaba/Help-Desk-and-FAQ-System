@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::latest()->paginate(20);
+
+        return view('admin.category.categories', compact('categories'));
     }
 
     /**
@@ -33,6 +37,7 @@ class CategoryController extends Controller
         $request->validate([
             'title' => 'required|max:255|string',
             'desc' => 'required',
+            'image' => 'required',
         ]);
 
         $category = new Category;
@@ -41,6 +46,8 @@ class CategoryController extends Controller
         $category->user_id = auth()->id();
         $category->image = "jhiyhufuhuitghgbhihu";
         $category->save();
+        Session::flash('message', 'Category Created Successful');
+        Session::flash('alert-class', 'alert-success');
         return back();
 
 
