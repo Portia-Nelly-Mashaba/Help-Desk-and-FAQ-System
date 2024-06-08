@@ -18,4 +18,12 @@ class Forum extends Model
     public function category(){
         return $this->belongsTo('App\Models\Category');
     }
+
+    public function topics(){
+        return $this->hasMany('App\Models\Topic');
+    }
+
+    public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }
 }

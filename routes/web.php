@@ -14,22 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index']);
 
 // testing interface
-// sRoute::get('/category', function () {
-//     return view('forum_user.category');
-// });
+Route::get('/category/overview/{id}', 'App\Http\Controllers\FrontendController@categoryOverview')->name('category.overview');
+Route::get('/forum/overview/{id}', 'App\Http\Controllers\FrontendController@forumOverview')->name('forum.overview');
+
+
 
 Route::get('/newpost', function () {
     return view('forum_user.new_post');
-});
-
-Route::get('/view', function () {
-    return view('forum_user.post_overview');
 });
 
 Route::get('/post', function () {
@@ -50,6 +48,7 @@ require __DIR__.'/auth.php';
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard/home', [App\Http\Controllers\admin\PanelDashboard::class, 'home'])->name('dashboard.home');
+    //Category
     Route::get('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'create'])->name('category.create');
     Route::post('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'store'])->name('category.store');
     Route::get('/dashboard/categories', [App\Http\Controllers\admin\CategoryController::class, 'index'])->name('categories');
@@ -67,3 +66,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/dashboard/forums/edit/{id}', [App\Http\Controllers\admin\ForumController::class, 'update'])->name('forum.update');
     Route::get('/dashboard/cateforumsgories/delete/{id}', [App\Http\Controllers\admin\ForumController::class, 'destroy'])->name('forum.delete');
 });
+
+
+
