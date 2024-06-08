@@ -38,17 +38,19 @@ class CategoryController extends Controller
             'title' => 'required|max:255|string',
             'desc' => 'required',
         ]);
-        $image =$request->image;
-        $name =$image->getClientOriginalName();
-        $new_name = tiime().$name;
-        $dir = "storage/images/categories";
-        $image->move($dir, $new_name);
+        // <!-- Image if you include -->
+        // <!-- $image =$request->image;
+        // $name =$image->getClientOriginalName();
+        // $new_name = tiime().$name;
+        // $dir = "storage/images/categories";
+        // $image->move($dir, $new_name); -->
 
         $category = new Category;
         $category->title = $request->title;
         $category->desc = $request->desc;
         $category->user_id = auth()->id();
-        $category->image = "$new_name";
+        //  <!-- Image if you include  -->
+        // <!-- $category->image = "$new_name"; -->
         $category->save();
         Session::flash('message', 'Category Created Successful');
         Session::flash('alert-class', 'alert-success');
@@ -72,7 +74,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.category.edit_category', compact('category'));
     }
 
     /**
@@ -80,7 +83,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+        if($request->title){
+            $category->title = $request->title;
+        }
+        if($request->desc){
+            $category->desc = $request->desc;
+        }
+
+        $category->save();
+        Session::flash('message', 'Category Updated Successful');
+        Session::flash('alert-class', 'alert-success');
+        return back();
     }
 
     /**
@@ -88,6 +102,10 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        Session::flash('message', 'Category Deleted Successful');
+        Session::flash('alert-class', 'alert-success');
+        return back();
     }
 }

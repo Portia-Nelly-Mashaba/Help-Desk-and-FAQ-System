@@ -8,11 +8,7 @@
               <!--overview start-->
           <div class="row">
             <div class="col-lg-12">
-              <h3 class="page-header"><i class="fa fa-laptop"></i> Forum Categories</h3>
-              <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="/dashboard/home">Home</a></li>
-                <li><i class="fa fa-users"></i>Categories</li>
-              </ol>
+                <h3 class="page-header"><i class="fa fa-edit"></i>Category > Home > Categories</h3>
             </div>
           </div>
 
@@ -33,8 +29,9 @@
                     <thead>
                       <tr>
                         <th>Title</th>
-                        <th>Image</th>
+                        {{-- <th>Image</th> --}}
                         <th>Description</th>
+                        <th>Created By</th>
                         <th>View</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -46,13 +43,14 @@
                             @foreach ($categories as $category)
                             <tr>
                                 <td>{{$category->title}}</td>
-                                <td>{{ asset('storage/images/categories/'.$category->image) }}</td>
+                                {{-- Image if you include --}}
+                                {{-- <td>{{ asset('storage/images/categories/'.$category->image) }}</td> --}}
                                 <td>{{$category->desc}}</td>
                                 {{-- <td>{!!$category->desc!!}</td> --}}
-                                {{-- <td>{{ $category->user->name }}</td> --}}
+                                <td>{{ $category->user_id}}</td>
                                 <td><a href="{{ route('category.show', $category->id)}}" class="text-success">View</a></td>
-                                <td><a href="#">Edit</a></td>
-                                <td><a href="#" class="text-danger">Delete</a></td>
+                                <td><a href="{{ route('category.update', $category->id)}}">Edit</a></td>
+                                <td><a href="{{ route('category.delete', $category->id)}}" class="text-danger">Delete</a></td>
 
                               </tr>
                             @endforeach

@@ -54,4 +54,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'store'])->name('category.store');
     Route::get('/dashboard/categories', [App\Http\Controllers\admin\CategoryController::class, 'index'])->name('categories');
     Route::get('/dashboard/categories/{id}', [App\Http\Controllers\admin\CategoryController::class, 'show'])->name('category.show');
+    Route::get('/dashboard/categories/edit/{id}', [App\Http\Controllers\admin\CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/dashboard/categories/edit/{id}', [App\Http\Controllers\admin\CategoryController::class, 'update'])->name('category.update');
+    Route::get('/dashboard/categories/delete/{id}', [App\Http\Controllers\admin\CategoryController::class, 'destroy'])->name('category.delete');
+    
 });

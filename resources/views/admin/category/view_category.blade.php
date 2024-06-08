@@ -8,11 +8,7 @@
               <!--overview start-->
           <div class="row">
             <div class="col-lg-12">
-              <h3 class="page-header"><i class="fa fa-laptop"></i> Forum Categories</h3>
-              <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="/dashboard/home">Home</a></li>
-                <li><i class="fa fa-users"></i>Categories</li>
-              </ol>
+                <h3 class="page-header"><i class="fa fa-edit"></i>Category > Home > Categories</h3>
             </div>
           </div>
 
@@ -33,9 +29,12 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <h4>{{ $category->title }}</h4>
-                            <img src="{{ asset('storage/images/categories/'.$category->image)}}" height="100" width="100" alt="Category image">
+                            {{-- Image if you include --}}
+                            {{-- <img src="{{ asset('storage/images/categories/'.$category->image)}}" height="100" width="100" alt="Category image"> --}}
+                            <p>{{$category->user_id }}</p>
                             <p>{{$category->desc }}</p>
 
+                            <a href="#">Button</a>
                         </div>
                     </div>
                   </div>
