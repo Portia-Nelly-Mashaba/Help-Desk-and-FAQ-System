@@ -57,8 +57,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard/categories/edit/{id}', [App\Http\Controllers\admin\CategoryController::class, 'edit'])->name('category.edit');
     Route::post('/dashboard/categories/edit/{id}', [App\Http\Controllers\admin\CategoryController::class, 'update'])->name('category.update');
     Route::get('/dashboard/categories/delete/{id}', [App\Http\Controllers\admin\CategoryController::class, 'destroy'])->name('category.delete');
-    
+
     //Forum
     Route::get('/dashboard/forum/create', [App\Http\Controllers\admin\ForumController::class, 'create'])->name('forum.create');
     Route::post('/dashboard/forum/create', [App\Http\Controllers\admin\ForumController::class, 'store'])->name('forum.store');
+    Route::get('/dashboard/forums', [App\Http\Controllers\admin\ForumController::class, 'index'])->name('forums');
 });

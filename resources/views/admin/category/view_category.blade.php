@@ -31,7 +31,7 @@
                             <h4>{{ $category->title }}</h4>
                             {{-- Image if you include --}}
                             {{-- <img src="{{ asset('storage/images/categories/'.$category->image)}}" height="100" width="100" alt="Category image"> --}}
-                            <p>{{$category->user_id }}</p>
+                            <p>{{$category->user->name}}</p>
                             <p>{{$category->desc }}</p>
 
                             <a href="#">Button</a>

@@ -8,7 +8,7 @@
               <!--overview start-->
           <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-edit"></i>Category > Home > Categories</h3>
+                <h3 class="page-header"><i class="fa fa-edit"></i>Forum > Home > Forums</h3>
             </div>
           </div>
 
@@ -17,7 +17,7 @@
             <div class="col-lg-12 col-md-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h2><i class="fa fa-flag-o red"></i><strong>Categories</strong></h2>
+                  <h2><i class="fa fa-flag-o red"></i><strong>Forums</strong></h2>
                   <div class="panel-actions">
                     <a href="/dashboard/home" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
                     <a href="/dashboard/home" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
@@ -29,7 +29,7 @@
                     <thead>
                       <tr>
                         <th>Title</th>
-                        {{-- <th>Image</th> --}}
+                        <th>Category</th>
                         <th>Description</th>
                         <th>Created By</th>
                         <th>View</th>
@@ -39,18 +39,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @if (count($categories)> 0)
-                            @foreach ($categories as $category)
+                        @if (count($forums)> 0)
+                            @foreach ($forums as $forum)
                             <tr>
-                                <td>{{$category->title}}</td>
-                                {{-- Image if you include --}}
-                                {{-- <td>{{ asset('storage/images/categories/'.$category->image) }}</td> --}}
-                                <td>{{$category->desc}}</td>
+                                <td>{{$forum->title}}</td>
+                                <td>{{$forum->category->title}}</td>
+                                <td>{{$forum->desc}}</td>
                                 {{-- <td>{!!$category->desc!!}</td> --}}
-                                <td>{{ $category->user->name}}</td>
-                                <td><a href="{{ route('category.show', $category->id)}}" class="text-success">View</a></td>
-                                <td><a href="{{ route('category.update', $category->id)}}">Edit</a></td>
-                                <td><a href="{{ route('category.delete', $category->id)}}" class="text-danger">Delete</a></td>
+                                <td>{{ $forum->user->name}}</td>
+                                <td><a href="{{ route('category.show', $forum->id)}}" class="text-success">View</a></td>
+                                <td><a href="{{ route('category.update', $forum->id)}}">Edit</a></td>
+                                <td><a href="{{ route('category.delete', $forum->id)}}" class="text-danger">Delete</a></td>
 
                               </tr>
                             @endforeach
@@ -58,7 +57,7 @@
                     </tbody>
                   </table>
 
-                  {{-- {{ $users->links() }} --}}
+                  {{ $forums->links() }}
                 </div>
 
               </div>
