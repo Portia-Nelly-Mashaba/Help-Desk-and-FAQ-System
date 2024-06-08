@@ -62,4 +62,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard/forum/create', [App\Http\Controllers\admin\ForumController::class, 'create'])->name('forum.create');
     Route::post('/dashboard/forum/create', [App\Http\Controllers\admin\ForumController::class, 'store'])->name('forum.store');
     Route::get('/dashboard/forums', [App\Http\Controllers\admin\ForumController::class, 'index'])->name('forums');
+    Route::get('/dashboard/forums/{id}', [App\Http\Controllers\admin\ForumController::class, 'show'])->name('forum.show');
+    Route::get('/dashboard/forums/edit/{id}', [App\Http\Controllers\admin\ForumController::class, 'edit'])->name('forum.edit');
+    Route::post('/dashboard/forums/edit/{id}', [App\Http\Controllers\admin\ForumController::class, 'update'])->name('forum.update');
+    Route::get('/dashboard/cateforumsgories/delete/{id}', [App\Http\Controllers\admin\ForumController::class, 'destroy'])->name('forum.delete');
 });

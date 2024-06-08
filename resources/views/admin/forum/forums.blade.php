@@ -47,9 +47,9 @@
                                 <td>{{$forum->desc}}</td>
                                 {{-- <td>{!!$category->desc!!}</td> --}}
                                 <td>{{ $forum->user->name}}</td>
-                                <td><a href="{{ route('category.show', $forum->id)}}" class="text-success">View</a></td>
-                                <td><a href="{{ route('category.update', $forum->id)}}">Edit</a></td>
-                                <td><a href="{{ route('category.delete', $forum->id)}}" class="text-danger">Delete</a></td>
+                                <td><a href="{{ route('forum.show', $forum->id)}}" class="text-success">View</a></td>
+                                <td><a href="{{ route('forum.edit', $forum->id)}}">Edit</a></td>
+                                <td><a href="{{ route('forum.delete', $forum->id)}}" class="text-danger">Delete</a></td>
 
                               </tr>
                             @endforeach

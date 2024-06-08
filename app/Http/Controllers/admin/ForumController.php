@@ -35,7 +35,7 @@ class ForumController extends Controller
     public function store(Request $request)
     {
         Forum::create($request->all());
-        Session::flash('message', 'Forum Created Successful');
+        Session::flash('message', 'Forum Created Successfully');
         Session::flash('alert-class', 'alert-success');
         return back();
     }
@@ -45,7 +45,8 @@ class ForumController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $forums = Forum::find($id);
+        // return view('admin.forum.view_forum', compact('forum'));
     }
 
     /**
@@ -53,7 +54,9 @@ class ForumController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $forum  = Forum::find($id);
+        $categories = Category::latest()->get();
+        return view('admin.forum.edit_forum', compact('forum', 'categories'));
     }
 
     /**
@@ -61,7 +64,11 @@ class ForumController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $forum = Forum::find($id);
+        $forum->update($request->all());
+        Session::flash('message', 'Forum Updated Successfully');
+        Session::flash('alert-class', 'alert-success');
+        return back();
     }
 
     /**
@@ -69,6 +76,10 @@ class ForumController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $forum =Forum::find($id);
+        $forum->delete();
+        Session::flash('message', 'Forum Deleted Successfully');
+        Session::flash('alert-class', 'alert-success');
+        return back();
     }
 }

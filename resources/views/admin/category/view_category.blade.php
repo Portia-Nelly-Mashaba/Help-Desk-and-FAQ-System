@@ -29,12 +29,10 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <h4>{{ $category->title }}</h4>
-                            {{-- Image if you include --}}
-                            {{-- <img src="{{ asset('storage/images/categories/'.$category->image)}}" height="100" width="100" alt="Category image"> --}}
                             <p>{{$category->user->name}}</p>
                             <p>{{$category->desc }}</p>
 
-                            <a href="#">Button</a>
+                            <a href="/admin/dashboard/categories" class="btn btn-success">Back</a>
                         </div>
                     </div>
                   </div>
