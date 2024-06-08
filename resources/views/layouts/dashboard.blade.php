@@ -31,7 +31,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="/dashboard/home">
+            <a class="" href="{{ route('dashboard.home')}}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -39,11 +39,12 @@
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="fa fa-edit"></i>
-                          <span>Help Desk User Menu</span>
+                          <span>User Forum Menu</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
               <li><a class="" href="{{ route('category.create')}}">Create Category</a></li>
+              <li><a class="" href="{{ route('forum.create')}}">Create Forum</a></li>
 
             </ul>
           </li>
