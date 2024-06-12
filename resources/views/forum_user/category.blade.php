@@ -22,7 +22,7 @@
                 <tr>
                   <th scope="col">Forum</th>
                   <th scope="col">Topics</th>
-                  <th scope="col">Posts</th>
+                  <th scope="col">Comments</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,8 +35,8 @@
                           </h3>
                           <p class="mb-0">{{$forum->desc}}</p>
                         </td>
-                        <td><div>{{$forum->topics}}</div></td>
-                        <td><div>{{count($forum->posts)}}</div></div></td>
+                        <td><div>{{count($forum->discussion)}}</div></td>
+                        <td><div>{{count($forum->discussion)}}</div></div></td>
 
                       </tr>
                     @endforeach

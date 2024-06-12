@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('topics', function (Blueprint $table) {
+        Schema::create('discussions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('desc');
+            $table->longText('desc');
             $table->unsignedBigInteger('forum_id');
             $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade');
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(0);
+            $table->string('image')->nullable();
+            $table->integer('views')->default(0);
+            $table->integer('notify')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('topics');
+        Schema::dropIfExists('discussions');
     }
 };

@@ -15,24 +15,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('login');
 // });
 
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index']);
 
-// testing interface
-Route::get('/category/overview/{id}', 'App\Http\Controllers\FrontendController@categoryOverview')->name('category.overview');
-Route::get('/forum/overview/{id}', 'App\Http\Controllers\FrontendController@forumOverview')->name('forum.overview');
+// Forum + Category on User_forum
+Route::get('category/overview/{id}', 'App\Http\Controllers\FrontendController@categoryOverview')->name('category.overview');
+Route::get('forum/overview/{id}', 'App\Http\Controllers\FrontendController@ForumOverview')->name('forum.overview');
+
+// Route::get('overview', function () {
+//     return view('forum_user.new_forum_overview');
+// });
+
+
+//Topic on User Forum
+Route::get('user/discussion/create/{id}', [App\Http\Controllers\DiscussionController::class, 'create'])->name('create.discussion');
+Route::post('user/discussion/create', [App\Http\Controllers\DiscussionController::class, 'store'])->name('store.discussion');
+Route::get('user/discussion/{id}', [App\Http\Controllers\DiscussionController::class, 'show'])->name('topic');
+Route::post('user/discussion/reply/{id}', [App\Http\Controllers\DiscussionController::class, 'reply'])->name('reply.discussion');
+// Route::get('client/topic/new', 'App\Http\Controllers\TopicController@edit')->name('topic.edit');
+// Route::get('client/topic/new', 'App\Http\Controllers\TopicController@edit')->name('topic.update');
+// Route::get('client/topic/new', 'App\Http\Controllers\TopicController@destroy')->name('topic.delete');
 
 
 
-Route::get('/newpost', function () {
-    return view('forum_user.new_post');
-});
 
-Route::get('/post', function () {
-       return view('forum_user.post');
- });
+
+
+// Route::get('/post', function () {
+//        return view('forum_user.new_post');
+//  });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -64,7 +77,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard/forums/{id}', [App\Http\Controllers\admin\ForumController::class, 'show'])->name('forum.show');
     Route::get('/dashboard/forums/edit/{id}', [App\Http\Controllers\admin\ForumController::class, 'edit'])->name('forum.edit');
     Route::post('/dashboard/forums/edit/{id}', [App\Http\Controllers\admin\ForumController::class, 'update'])->name('forum.update');
-    Route::get('/dashboard/cateforumsgories/delete/{id}', [App\Http\Controllers\admin\ForumController::class, 'destroy'])->name('forum.delete');
+    Route::get('/dashboard/forums/delete/{id}', [App\Http\Controllers\admin\ForumController::class, 'destroy'])->name('forum.delete');
 });
 
 
