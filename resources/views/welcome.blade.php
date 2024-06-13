@@ -121,6 +121,15 @@
           <div class="card-footer">
             <div>New Member</div>
             <div><a href="#">{{$newMember->name}}</a></div>
+
+            <div>Online Members</div>
+            <ul class="list-unstyled mb-0">
+                @if (count($users_online) > 0)
+                    @foreach ($users_online as $user)
+                    <li><a href="" >{{$user->name}}<span class="badge badge-pill badge-success">online</span></a></li>
+                    @endforeach
+                @endif
+            </ul>
           </div>
         </div>
       </aside>

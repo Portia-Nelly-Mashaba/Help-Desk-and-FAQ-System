@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('login');
-// });
+Route::get('/home', function () {
+    return view('login');
+});
 
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index']);
 
@@ -33,10 +33,16 @@ Route::get('forum/overview/{id}', 'App\Http\Controllers\FrontendController@Forum
 Route::get('user/discussion/create/{id}', [App\Http\Controllers\DiscussionController::class, 'create'])->name('create.discussion');
 Route::post('user/discussion/create', [App\Http\Controllers\DiscussionController::class, 'store'])->name('store.discussion');
 Route::get('user/discussion/{id}', [App\Http\Controllers\DiscussionController::class, 'show'])->name('topic');
+
 Route::post('user/discussion/reply/{id}', [App\Http\Controllers\DiscussionController::class, 'reply'])->name('reply.discussion');
+Route::get('user/discussion/delete/{id}', [App\Http\Controllers\DiscussionController::class, 'destroy'])->name('delete.reply');
+Route::get('user/reply/like/{id}', [App\Http\Controllers\DiscussionController::class, 'like'])->name('like.reply');
+Route::get('user/reply/dislike/{id}', [App\Http\Controllers\DiscussionController::class, 'dislike'])->name('dislike.reply');
 // Route::get('client/topic/new', 'App\Http\Controllers\TopicController@edit')->name('topic.edit');
 // Route::get('client/topic/new', 'App\Http\Controllers\TopicController@edit')->name('topic.update');
-// Route::get('client/topic/new', 'App\Http\Controllers\TopicController@destroy')->name('topic.delete');
+//Route::get('user/discussion/reply/{id}', 'App\Http\Controllers\TopicController@destroy')->name('topic.delete');
+
+
 
 
 

@@ -77,6 +77,19 @@
                                 <div>
                                     <span class="font-weight-bold">Replied:</span> {{$reply->created_at->diffForHumans()}}
                                 </div>
+                                @if(auth()->id() == $reply->user_id)
+                                <div>
+                                    <a href="{{route('delete.reply', $reply->id)}}"><i class="fa fa-trash text-dark"></i></a>
+                                    {{-- <a href="{{route('delete.reply', $reply->id)}}" class="btn btn-dark">Delete</a> --}}
+                                </div>
+                                @else
+                                <div>
+                                    <a href="{{route('like.reply', $reply->id)}}" class="mr-3"><i class="fa fa-thumbs-up text-dark"></i>20</a>
+                                    {{-- <a href="{{route('like.reply', $reply->id)}}" class="btn btn-dark">Like</a> --}}
+                                    <a href="{{route('dislike.reply', $reply->id)}}"><i class="fa fa-thumbs-down text-dark"></i>16</a>
+                                    {{-- <a href="{{route('dislike.reply', $reply->id)}}" class="btn btn-dark">Dislike</a> --}}
+                                </div>
+                                @endif
                             </td>
                         </tr>
                         <tr>
