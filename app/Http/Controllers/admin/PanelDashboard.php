@@ -9,6 +9,10 @@ class PanelDashboard extends Controller
 {
     public function home()
     { 
-        return view('admin.home'); 
+        //return view('admin.home'); 
+        
+        return view('admin.dashboard'); 
+
+        //return view('admin.category.new_categories');
     }
 }

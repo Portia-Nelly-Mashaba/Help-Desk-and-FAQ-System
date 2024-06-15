@@ -18,18 +18,18 @@ Route::get('/home', function () {
     return view('login');
 });
 
+// Route::get('/new/dashboard', function () {
+//     return view('layouts.dashboard_auth');
+// });
+
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index']);
 
 // Forum + Category on User_forum
 Route::get('category/overview/{id}', 'App\Http\Controllers\FrontendController@categoryOverview')->name('category.overview');
 Route::get('forum/overview/{id}', 'App\Http\Controllers\FrontendController@ForumOverview')->name('forum.overview');
 
-// Route::get('overview', function () {
-//     return view('forum_user.new_forum_overview');
-// });
 
-
-//Topic on User Forum
+//Discussion on User Forum
 Route::get('user/discussion/create/{id}', [App\Http\Controllers\DiscussionController::class, 'create'])->name('create.discussion');
 Route::post('user/discussion/create', [App\Http\Controllers\DiscussionController::class, 'store'])->name('store.discussion');
 Route::get('user/discussion/{id}', [App\Http\Controllers\DiscussionController::class, 'show'])->name('topic');
@@ -38,34 +38,11 @@ Route::post('user/discussion/reply/{id}', [App\Http\Controllers\DiscussionContro
 Route::get('user/discussion/delete/{id}', [App\Http\Controllers\DiscussionController::class, 'destroy'])->name('delete.reply');
 Route::get('user/reply/like/{id}', [App\Http\Controllers\DiscussionController::class, 'like'])->name('like.reply');
 Route::get('user/reply/dislike/{id}', [App\Http\Controllers\DiscussionController::class, 'dislike'])->name('dislike.reply');
-// Route::get('client/topic/new', 'App\Http\Controllers\TopicController@edit')->name('topic.edit');
-// Route::get('client/topic/new', 'App\Http\Controllers\TopicController@edit')->name('topic.update');
-//Route::get('user/discussion/reply/{id}', 'App\Http\Controllers\TopicController@destroy')->name('topic.delete');
 
-
-
-
-
-
-
-
-// Route::get('/post', function () {
-//        return view('forum_user.new_post');
-//  });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
-
+//Admin Panel
 Route::prefix('admin')->group(function () {
+    //Route::get('/dashboard/home', [App\Http\Controllers\admin\PanelDashboard::class, 'home'])->name('dashboard.home');
+
     Route::get('/dashboard/home', [App\Http\Controllers\admin\PanelDashboard::class, 'home'])->name('dashboard.home');
     //Category
     Route::get('/dashboard/category/create', [App\Http\Controllers\admin\CategoryController::class, 'create'])->name('category.create');
@@ -88,3 +65,14 @@ Route::prefix('admin')->group(function () {
 
 
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

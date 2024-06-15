@@ -1,98 +1,94 @@
-<?php
-use Illuminate\Support\Facades\Session;
-?>
-@extends('layouts.dashboard')
+@extends('layouts.admin_auth')
 
 @section('content')
-          <!--main content start-->
 
+<div class="main-content">
 
-    <section id="main-content">
-        <section class="wrapper">
-          <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-edit"></i>Add New Category > Home > Category > Add</h3>
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Add New Category</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                                <li class="breadcrumb-item active">Category</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- end page title -->
+            <div class="card">
+                <div class="card-body">
+                    @if (session()->has('errors'))
+                        @foreach ($errors as $error)
+                            {{$error}}
+                        @endforeach
+                    @endif
+                    @if(\Session::has('message'))
 
+                    <p class="alert
+                    {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('message') }}</p>
 
-          <!-- edit-profile -->
-<div id="edit-profile" class="tab-pane">
-  <section class="panel">
-    <div class="panel-body bio-graph-info">
-        @if (session()->has('errors'))
-            @foreach ($errors as $error)
-                {{$error}}
-            @endforeach
-        @endif
-      @if(\Session::has('message'))
+                    @endif
 
-      <p class="alert
-      {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('message') }}</p>
+                    <h4 class="card-title">Add New Category</h4>
+                    <p></p>
+                    <form method="POST" action="{{ route('category.store')}}" >
+                        @csrf
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label" for="title">Category Title</label>
+                        <div class="col-sm-10">
+                            <input name="title" class="form-control" type="text"  id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        @error('title')
+                            <p class="alert alert-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <!-- end row -->
+                    <div class="mb-3">
+                        <label>Category Description</label>
+                        <div>
+                            <textarea name="desc"  class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        @error('desc')
+                            <p class="alert alert-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <!-- end row -->
+                    <div class="mb-0">
+                        <div>
+                            <button type="submit" class="btn btn-dark waves-effect waves-light me-1">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-secondary waves-effect">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </form>
+                    
+                </div>
+            </div> 
 
-      @endif
-      <form  method="POST" action="{{ route('category.store')}}" >
-          @csrf
-
-          <div class="form-group">
-            <label class="col-lg-2" for="title">Category Title</label>
-            <div class="col-lg-10">
-            <input name="title" type="text" class="form-control" />
-            </div>
-        </div>
-        <div class="col-lg-10">
-            @error('title')
-                <p class="alert alert-danger">{{ $message }}</p>
-            @enderror
-        </div>
-
-        {{-- Image if you include --}}
-
-        {{-- <div class="form-group">
-            <label class="col-lg-2" for="image">Category Image</label>
-            <div class="col-lg-10">
-            <input name="image" type="file" class="form-control" name="post-image" />
-            </div>
-        </div>
-        <div class="col-lg-10">
-            @error('image')
-                <p class="alert alert-danger">{{ $message }}</p>
-            @enderror
-        </div> --}}
-        
-
-        <div class="form-group">
-            <label class="col-lg-2" form-control"> Category Description</label>
-            <div class="col-lg-10">
-            <textarea
-            class="form-control"
-            name="desc">
-            </textarea>
-            </div>
-        </div>
-        <div class="col-lg-10">
-            @error('desc')
-                <p class="alert alert-danger">{{ $message }}</p>
-            @enderror
         </div>
             
-        
-        <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
-            Add
-        </button>
-        <button type="reset" class="btn btn-danger mt-2 mb-lg-5">Reset</button>
-        </form>
-        <div></div>
-
-            </div>
-              </form>
-    </div>
-  </section>
+    
 </div>
+<!-- end main content-->
 
-
-        </section>
-      </section>
-      <!--main content end-->
-
+</div>
 @endsection
+
+

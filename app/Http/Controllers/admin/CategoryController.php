@@ -17,7 +17,8 @@ class CategoryController extends Controller
     {
         $categories = Category::latest()->paginate(20);
 
-        return view('admin.category.categories', compact('categories'));
+        //dd($categories);
+       return view('admin.category.categories', compact('categories'));
     }
 
     /**

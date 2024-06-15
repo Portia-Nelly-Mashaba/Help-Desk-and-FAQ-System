@@ -17,6 +17,7 @@ class ForumController extends Controller
     {
         $forums = Forum::latest()->paginate(20);
 
+        //return view('admin.forum.forums', compact('forums'));
         return view('admin.forum.forums', compact('forums'));
     }
 
