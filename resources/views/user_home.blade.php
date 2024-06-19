@@ -22,7 +22,7 @@
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b>Posts</b> <a class="float-right">1,322</a>
+                                <b>Posts</b> <a class="float-right">{{count(auth()->user()->topics)}}</a>
                             </li>
                             <li class="list-group-item">
                                 <b>Comments</b> <a class="float-right">543</a>
@@ -32,7 +32,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                        {{-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> --}}
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -93,7 +93,7 @@
                     <div class="card-header p-2">
                         <ul class="nav nav-pills black">
                             <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Notifications</a></li>
                             <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                         </ul>
                     </div><!-- /.card-header -->
@@ -127,8 +127,8 @@
                                         <p>{{ $latest_Posts->desc }}</p>
 
                                     <p>
-                                        
-                                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Likes</a>
+                                        <a href="#" class="link-black text-sm"><i class="far fa-eye mr-1"></i>{{$latest_Posts->views}} views</a>
+                                        <a href="#" class="link-black text-sm"><i class="far fa-comments mr-1"></i> {{$latest_Posts->reply->count()}} replies</a>
                                         <span class="float-right">
                                             @if ($latest_Posts && $latest_Posts->reply && $latest_Posts->reply->count() > 0)
                                             <button class="btn btn-dark disabled"><i class="fa fa-trash"></i></button>
@@ -140,6 +140,8 @@
                                         </span>
                                         
                                     </p>
+
+                                    <br></br>
                                 </div>
                                 @else
                                 <p>You have not started any discussion yet</p>
