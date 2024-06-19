@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('discussion_id');
             $table->foreign('discussion_id')->references('id')->on('discussions')->onDelete('cascade');
             $table->boolean('is_deleted')->default(0);
-            $table->integer('views')->default(0);
+            $table->integer('likes')->default(0);
+            $table->integer('dislikes')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

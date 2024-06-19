@@ -114,4 +114,44 @@ class DiscussionController extends Controller
 
         return back();
     }
+
+    public function like($id)
+    {
+        $reply = DiscussionReply::find($id);
+        $user_id = $reply->id;
+        $owner = User::find($user_id);
+        $reply->increment('likes', 1);
+
+        toastr()->success('Like saved successfully');
+
+        return back();
+    }
+
+    public function dislike($id)
+    {
+        $reply = DiscussionReply::find($id);
+        $user_id = $reply->id;
+        $owner = User::find($user_id);
+        $reply->decrement('dislikes', 1);
+
+        toastr()->success('dislikes saved successfully');
+
+        return back();
+    }
+
+    
+
+    public function remove($id)
+{
+    $discussion = Discussion::find($id);
+
+    if ($discussion) {
+        $discussion->delete();
+        toastr()->success('Discussion deleted successfully');
+    } else {
+        toastr()->error('Discussion not found');
+    }
+
+    return back();
+}
 }

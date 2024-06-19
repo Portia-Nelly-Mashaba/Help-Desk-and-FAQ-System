@@ -30,7 +30,7 @@
                     <tr>
                     <td>
                         <h3 class="h6">
-                        <span class="badge badge-primary">7 unread</span>
+                        <span class="badge badge-dark text-black">{{$topic->reply->count()}} replies</span>
                         <a href="{{route('topic', $topic->id)}}" class="">{{$topic->title}}</a>
                         </h3>
 
@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <a href="{{route('create.discussion', $forum->id)}}" class="btn btn-lg btn-primary mb-2">New Discussion</a>
+    <a href="{{route('create.discussion', $forum->id)}}" class="btn btn-lg btn-dark mb-2">New Discussion</a>
   </div>
 
 @endsection

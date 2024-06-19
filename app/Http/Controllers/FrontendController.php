@@ -7,6 +7,7 @@ use App\Models\Forum;
 use App\Models\Category;
 use App\Models\Discussion;
 use Illuminate\Http\Request;
+use App\Models\DiscussionReply;
 
 class FrontendController extends Controller
 {
@@ -26,8 +27,27 @@ class FrontendController extends Controller
     }
 
     public function categoryOverview($id){
+
+        // Get the category
         $category = Category::find($id);
-         return view('forum_user.category', compact('category'));
+
+        // Get counts for the specific category
+        $forumsCount = Forum::where('category_id', $id)->count();
+        $discussionCount = Discussion::whereHas('forum', function ($query) use ($id) {
+            $query->where('category_id', $id);
+        })->count();
+        $totalRepliesCount = DiscussionReply::whereHas('discussion.forum', function ($query) use ($id) {
+            $query->where('category_id', $id);
+        })->count();
+        $totalLikesCount = DiscussionReply::whereHas('discussion.forum', function ($query) use ($id) {
+            $query->where('category_id', $id);
+        })->sum('likes');
+        $totalDisikesCount = DiscussionReply::whereHas('discussion.forum', function ($query) use ($id) {
+            $query->where('category_id', $id);
+        })->sum('dislikes');
+
+        $category = Category::find($id);
+         return view('forum_user.category', compact('category', 'forumsCount', 'discussionCount', 'totalRepliesCount', 'totalLikesCount', 'totalDisikesCount'));
     }
 
         //dd($id);

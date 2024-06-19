@@ -21,7 +21,7 @@
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Forum</th>
-                  <th scope="col">Topics</th>
+                  <th scope="col">Discussions</th>
                   <th scope="col">Comments</th>
                 </tr>
               </thead>
@@ -52,53 +52,51 @@
       <div class="col-lg-4">
         <aside>
           <div class="card">
-            <h4 class="card-title">FAQ</h4>
-            <dl class="row">
-              <dt class="col-8 mb-0">Category 1:</dt>
-              <dd class="col-4 mb-0">Question 1</dd></dd>
-            </dl>
-            <dl class="row">
-              <dt class="col-8 mb-0">Category 2:</dt>
-              <dd class="col-4 mb-0">Question 2</dd>
-            </dl>
-            <dl class="row">
-              <dt class="col-8 mb-0">Category 3:</dt>
-              <dd class="col-4 mb-0">Question 3</dd>
-            </dl>
-            <dl class="row">
-                <dt class="col-8 mb-0">Category 4:</dt>
-                <dd class="col-4 mb-0">Question 4</dd>
+            <div class="card-footer">
+              <h4 class="card-title">FAQ</h4>
+              <dl class="row">
+                <dt class="col-8 mb-0">Question1:</dt>
+                <dd class="col-4 mb-0">+</dd>
               </dl>
               <dl class="row">
-                <dt class="col-8 mb-0">Category 5:</dt>
-                <dd class="col-4 mb-0">Question 5</dd>
+                <dt class="col-8 mb-0">Question2:</dt>
+                <dd class="col-4 mb-0">+</dd>
               </dl>
               <dl class="row">
-                <dt class="col-8 mb-0">Category 6:</dt>
-                <dd class="col-4 mb-0">Question 6</dd>
+                <dt class="col-8 mb-0">Question3:</dt>
+                <dd class="col-4 mb-0">+</dd>
               </dl>
-          <div class="card-footer">
-            <div class="card-body">
-                <h4 class="card-title">Members Online</h4>
-                <ul class="list-unstyled mb-0">
-                  <li><a href="#">Member name</a></li>
-                  <li><a href="#">Member name</a></li>
-                  <li><a href="#">Member name</a></li>
-                  <li><a href="#">Member name</a></li>
-                  <li><a href="#">Member name</a></li>
-                </ul>
-              </div>
-
+            </div>
           </div>
-        </div>
-        </div>
-      </aside>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Statistics</h4>
+              <dl class="row">
+                <dt class="col-8 mb-0">Total Forums:</dt>
+                <dd class="col-4 mb-0">{{$forumsCount}}</dd>
+              </dl>
+              <dl class="row">
+                <dt class="col-8 mb-0">Total Posts/Discussions:</dt>
+                <dd class="col-4 mb-0">{{$discussionCount}}</dd>
+              </dl>
+              <dl class="row">
+                <dt class="col-8 mb-0">Total Replies:</dt>
+                <dd class="col-4 mb-0">{{$totalRepliesCount}}</dd>
+              </dl>
+              <dl class="row">
+                <dt class="col-8 mb-0">Total Likes:</dt>
+                <dd class="col-4 mb-0">{{$totalLikesCount}}</dd>
+              </dl>
+              <dl class="row">
+                <dt class="col-8 mb-0">Total Disikes:</dt>
+                <dd class="col-4 mb-0">{{$totalDisikesCount}}</dd>
+              </dl>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-
-
-@endsection
+  
+  
+  @endsection

@@ -22,6 +22,12 @@ Route::get('/home', function () {
 //     return view('layouts.dashboard_auth');
 // });
 
+Route::get('/new/dashboard', function () {
+        return view('new_dashboard');
+    });
+
+//Frontend- user app
+
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index']);
 
 // Forum + Category on User_forum
@@ -36,8 +42,18 @@ Route::get('user/discussion/{id}', [App\Http\Controllers\DiscussionController::c
 
 Route::post('user/discussion/reply/{id}', [App\Http\Controllers\DiscussionController::class, 'reply'])->name('reply.discussion');
 Route::get('user/discussion/delete/{id}', [App\Http\Controllers\DiscussionController::class, 'destroy'])->name('delete.reply');
+Route::get('user/topic/delete/{id}', [App\Http\Controllers\DiscussionController::class, 'remove'])->name('delete.topic');
 Route::get('user/reply/like/{id}', [App\Http\Controllers\DiscussionController::class, 'like'])->name('like.reply');
 Route::get('user/reply/dislike/{id}', [App\Http\Controllers\DiscussionController::class, 'dislike'])->name('dislike.reply');
+
+Route::get('user/updates', [App\Http\Controllers\UserController::class, 'update']);
+Route::post('user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('update.user');
+
+//home page
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);
+//end of Frontend- user app
+
 
 //Admin Panel
 Route::prefix('admin')->group(function () {
@@ -65,9 +81,9 @@ Route::prefix('admin')->group(function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
