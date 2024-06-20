@@ -126,7 +126,7 @@
             <ul class="list-unstyled mb-0">
                 @if (count($users_online) > 0)
                     @foreach ($users_online as $user)
-                    <li><a href="" >{{$user->name}}<span class="badge badge-pill badge-success">online</span></a></li>
+                    <li><a href="{{route('profile.user', $user->id)}}" >{{$user->name}}<span class="badge badge-pill badge-success">online</span></a></li>
                     @endforeach
                 @endif
             </ul>

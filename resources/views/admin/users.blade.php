@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.admin_auth')
 
 @section('content')
       <!--main content start-->
@@ -34,11 +34,10 @@
                       <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Rank</th>
                         <th>View</th>
                         <th>Edit</th>
                         <th>Delete</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>
@@ -47,11 +46,10 @@
                             <tr>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->rank}}</td>
                                 <td><a href="/dashboard/users/{{$user->id}}"><i class="fa fa-eye text-success"></i></a></td>
                                 <td><a href="#"><i class="fa fa-edit text-info"></i></a></td>
                                 <td><a href="#" class="text-danger"><i class="fa fa-trash"></i>Delete</a></td>
-                               
+
                               </tr>
                             @endforeach
                         @endif
@@ -60,16 +58,16 @@
 
                   {{ $users->links() }}
                 </div>
-  
+
               </div>
-  
+
             </div>
-            
+
             </div>
             <!--/col-->
-  
+
           </div>
-  
+
 
 
         </section>

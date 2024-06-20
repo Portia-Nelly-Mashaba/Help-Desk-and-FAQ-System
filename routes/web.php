@@ -22,9 +22,9 @@ Route::get('/home', function () {
 //     return view('layouts.dashboard_auth');
 // });
 
-Route::get('/new/dashboard', function () {
-        return view('new_dashboard');
-    });
+// Route::get('/new/dashboard', function () {
+//         return view('new_dashboard');
+//     });
 
 //Frontend- user app
 
@@ -46,11 +46,13 @@ Route::get('user/topic/delete/{id}', [App\Http\Controllers\DiscussionController:
 Route::get('user/reply/like/{id}', [App\Http\Controllers\DiscussionController::class, 'like'])->name('like.reply');
 Route::get('user/reply/dislike/{id}', [App\Http\Controllers\DiscussionController::class, 'dislike'])->name('dislike.reply');
 
+//user's profile
 Route::get('user/updates', [App\Http\Controllers\UserController::class, 'update']);
 Route::post('user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('update.user');
 
-//home page
+Route::get('user/profile/{id}', 'App\Http\Controllers\FrontendController@profile')->name('profile.user');
 
+//home page
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index']);
 //end of Frontend- user app
 
@@ -77,6 +79,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard/forums/edit/{id}', [App\Http\Controllers\admin\ForumController::class, 'edit'])->name('forum.edit');
     Route::post('/dashboard/forums/edit/{id}', [App\Http\Controllers\admin\ForumController::class, 'update'])->name('forum.update');
     Route::get('/dashboard/forums/delete/{id}', [App\Http\Controllers\admin\ForumController::class, 'destroy'])->name('forum.delete');
+
+    //Users
+    Route::get('/dashboard/users/{id}', [App\Http\Controllers\admin\PanelDashboard::class, 'show'])->name('user');
+    Route::post('/dashboard/users/{id}', [App\Http\Controllers\admin\PanelDashboard::class, 'destroy'])->name('user.delete');
 });
 
 

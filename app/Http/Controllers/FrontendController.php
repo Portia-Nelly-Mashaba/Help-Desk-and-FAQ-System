@@ -56,4 +56,12 @@ class FrontendController extends Controller
             $forum =Forum::find($id);
             return view('forum_user.new_forum_overview', compact('forum'));
     }
+
+    public function profile($id)
+    {
+        $latest_Posts = Discussion::where('user_id', id)->latest()->first();
+        $latest = Discussion::lastest()->first();
+        $user = User::find($id);
+        return view('user_profile', compact('user'));
+    }
 }

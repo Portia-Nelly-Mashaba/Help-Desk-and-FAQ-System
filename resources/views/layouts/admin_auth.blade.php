@@ -44,7 +44,7 @@
                         <div class="navbar-brand-box d-lg-block mt-3">
                             <h3 class="text-white">HelpDesk</h3>
                         </div>
-                          
+
                         <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
                             <i class="ri-menu-2-line align-middle"></i>
                         </button>
@@ -164,7 +164,7 @@
                         <div class="dropdown d-none d-sm-inline-block">
                             <button type="button" class="btn header-item waves-effect"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
+
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
 
@@ -342,7 +342,7 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user" src="{{ asset('assets/admin/images/users/avatar-1.jpg')}}"
                                     alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ms-1">Julia</span>
+                                <span class="d-none d-xl-inline-block ms-1">Portia</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -382,7 +382,7 @@
                             <img src="{{ asset('assets/admin/images/users/avatar-1.jpg')}}" alt="" class="avatar-md rounded-circle">
                         </div>
                         <div class="mt-3">
-                            <h4 class="font-size-16 mb-1">Julia Hudda</h4>
+                            <h4 class="font-size-16 mb-1">Portia Mashaba</h4>
                             <span class="text-muted"><i class="ri-record-circle-line align-middle font-size-14 text-success"></i> Online</span>
                         </div>
                     </div>
@@ -439,15 +439,27 @@
                                     <li><a href="">New Replies</a></li>
                                 </ul>
                             </li>
-                            
+
 
                             <li class="menu-title">Users</li>
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="ri-account-circle-line"></i>
+                                    <span>Registered Users</span>
+                                </a>
+
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="">Users</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="ri-account-circle-line"></i>
                                     <span>Authentication</span>
                                 </a>
+
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="auth-login.html">Login</a></li>
                                     <li><a href="auth-register.html">Register</a></li>
@@ -457,7 +469,7 @@
                             </li>
 
 
-                            
+
                         </ul>
                     </div>
                     <!-- Sidebar -->
@@ -531,7 +543,7 @@
         <!-- JAVASCRIPT -->
         <script src="{{ asset('assets/admin/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{ asset('assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        
+
         {{-- <script src="{{ asset('assets/admin/libs/metismenu/metisMenu.min.js')}}"></script> --}}
         <script src="{{ asset('assets/admin/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{ asset('assets/admin/libs/node-waves/waves.min.js')}}"></script>
@@ -556,6 +568,10 @@
 
         <!-- App js -->
         <script src="{{ asset('assets/admin/js/app.js')}}"></script>
+
+        {{-- tab pane js --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     </body>
 
 </html>

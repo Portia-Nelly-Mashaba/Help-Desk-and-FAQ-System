@@ -31,13 +31,18 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Total Sales</p>
-                                    <h4 class="mb-2">1452</h4>
-                                    <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
-                                </div>
+                                    <a href="/admin/dashboard/categories"><p class="text-truncate font-size-14 mb-2">Categories</p></a>
+                                    @if ($categories->count() > 0)
+
+                                        <h4 class="mb-2">{{$categories->count()}}</h4>
+
+                                    @else
+                                    <h4 class="mb-2">0</h4>
+                                    @endif
+                               </div>
                                 <div class="avatar-sm">
                                     <span class="avatar-title bg-light text-primary rounded-3">
-                                        <i class="ri-shopping-cart-2-line font-size-24"></i>
+                                        <i class="fas fa-list-alt font-size-24"></i>
                                     </span>
                                 </div>
                             </div>
@@ -49,13 +54,18 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">New Orders</p>
-                                    <h4 class="mb-2">938</h4>
-                                    <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-12 me-2"><i class="ri-arrow-right-down-line me-1 align-middle"></i>1.09%</span>from previous period</p>
+                                    <a href="/admin/dashboard/forums"><p class="text-truncate font-size-14 mb-2">Forums</p></a>
+                                    @if ($forums->count() > 0)
+
+                                        <h4 class="mb-2">{{$forums->count()}}</h4>
+
+                                    @else
+                                    <h4 class="mb-2">0</h4>
+                                    @endif
                                 </div>
                                 <div class="avatar-sm">
                                     <span class="avatar-title bg-light text-success rounded-3">
-                                        <i class="mdi mdi-currency-usd font-size-24"></i>
+                                        <i class="fas fa-chalkboard-teacher"></i>
                                     </span>
                                 </div>
                             </div>
@@ -67,31 +77,42 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">New Users</p>
-                                    <h4 class="mb-2">8246</h4>
-                                    <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>16.2%</span>from previous period</p>
-                                </div>
+                                    <a href="#users"><p class="text-truncate font-size-14 mb-2">Users</p></a>
+                                    @if ($users->count() > 0)
+
+                                        <h4 class="mb-2">{{$users->count()}}</h4>
+
+                                    @else
+                                    <h4 class="mb-2">0</h4>
+                                    @endif
+                                  </div>
                                 <div class="avatar-sm">
                                     <span class="avatar-title bg-light text-primary rounded-3">
-                                        <i class="ri-user-3-line font-size-24"></i>
+                                        <i class="fa fa-users" font-size-30"></i>
                                     </span>
                                 </div>
                             </div>
                         </div><!-- end cardbody -->
                     </div><!-- end card -->
                 </div><!-- end col -->
-                <div class="col-xl-3 col-md-6">
+                <div class="col-xl-3 col-md-7">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Unique Visitors</p>
-                                    <h4 class="mb-2">29670</h4>
-                                    <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>11.7%</span>from previous period</p>
-                                </div>
+                                    <p class="text-truncate font-size-14 mb-2">Posts</p>
+
+                                        @if ($discussion->count() > 0)
+
+                                            <h4 class="mb-2">{{$discussion->count()}}</h4>
+
+                                        @else
+                                        <h4 class="mb-2">0</h4>
+                                        @endif
+                               </div>
                                 <div class="avatar-sm">
                                     <span class="avatar-title bg-light text-success rounded-3">
-                                        <i class="mdi mdi-currency-btc font-size-24"></i>
+                                        <i class="fas fa-comments font-size-24"></i>
                                     </span>
                                 </div>
                             </div>
@@ -101,114 +122,54 @@
             </div><!-- end row -->
 
             <div class="row">
-                <div class="col-xl-6">
-
+                <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body pb-0">
-                            <div class="float-end d-none d-md-inline-block">
-                                <div class="dropdown card-header-dropdown">
-                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">Export</a>
-                                        <a class="dropdown-item" href="#">Import</a>
-                                        <a class="dropdown-item" href="#">Download Report</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title mb-4">Email Sent</h4>
+                            <div class="float-end d-none d-md-inline-block
 
-                            <div class="text-center pt-3">
-                                <div class="row">
-                                    <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <div class="d-inline-flex">
-                                            <h5 class="me-2">25,117</h5>
-                                            <div class="text-success font-size-12">
-                                                <i class="mdi mdi-menu-up font-size-14"> </i>2.2 %
-                                            </div>
-                                        </div>
-                                        <p class="text-muted text-truncate mb-0">Marketplace</p>
-                                    </div><!-- end col -->
-                                    <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <div class="d-inline-flex">
-                                            <h5 class="me-2">$34,856</h5>
-                                            <div class="text-success font-size-12">
-                                                <i class="mdi mdi-menu-up font-size-14"> </i>1.2 %
-                                            </div>
-                                        </div>
-                                        <p class="text-muted text-truncate mb-0">Last Week</p>
-                                    </div><!-- end col -->
-                                    <div class="col-sm-4">
-                                        <div class="d-inline-flex">
-                                            <h5 class="me-2">$18,225</h5>
-                                            <div class="text-success font-size-12">
-                                                <i class="mdi mdi-menu-up font-size-14"> </i>1.7 %
-                                            </div>
-                                        </div>
-                                        <p class="text-muted text-truncate mb-0">Last Month</p>
-                                    </div><!-- end col -->
-                                </div><!-- end row -->
-                            </div>
-                        </div>
-                        <div class="card-body py-0 px-2">
-                            <div id="area_chart" class="apex-charts" dir="ltr"></div>
-                        </div>
-                    </div><!-- end card -->
-                </div>
-                <!-- end col -->
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body pb-0">
-                            <div class="float-end d-none d-md-inline-block">
-                                <div class="dropdown">
-                                    <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="text-muted">This Years<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">Today</a>
-                                        <a class="dropdown-item" href="#">Last Week</a>
-                                        <a class="dropdown-item" href="#">Last Month</a>
-                                        <a class="dropdown-item" href="#">This Year</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title mb-4">Revenue</h4>
+                                                <h4 class="card-title">New Posts</h4>
 
-                            <div class="text-center pt-3">
-                                <div class="row">
-                                    <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <div>
-                                            <h5>17,493</h5>
-                                            <p class="text-muted text-truncate mb-0">Marketplace</p>
+
+
+                                                <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="datatable_length"><label>Show <select name="datatable_length" aria-controls="datatable" class="custom-select custom-select-sm form-control form-control-sm form-select form-select-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" aria-describedby="datatable_info">
+                                                    <thead>
+                                                    <tr><th class="sorting sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 104px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Forum Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 165px;" aria-label="Desc: activate to sort column ascending">Post Title</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 71px;" aria-label="Created By: activate to sort column ascending">Author</th>
+                                                        <th rowspan="1" colspan="1" style="width: 27px;">View</th>
+                                                        <th rowspan="1" colspan="1" style="width: 27px;">Delete</th>
+
+                                                    </tr>
+                                                    </thead>
+
+
+                                                    <tbody>
+                                                        {{-- @if (count($categories) > 0)
+                                                            @foreach ($categories as $category) --}}
+                                                                <tr class="odd">
+                                                                    <td class="dtr-control sorting_1" tabindex="0">Row1</td>
+                                                                    <td>Row1</td>
+                                                                    <td>Row1</td>
+                                                                    <td><a href=""><i class="fa fa-eye" aria-hidden="true" class="text-dark"></i></a></td>
+                                                                    <td><a href=""><i class="fa fa-trash" aria-hidden="true" class="text-dark"></i></a></td>
+                                                                </tr>
+                                                    </tbody>
+                                                </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate"><ul class="pagination pagination-rounded"><li class="paginate_button page-item previous disabled" id="datatable_previous"><a aria-controls="datatable" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="-1" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="datatable" role="link" aria-current="page" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="datatable" role="link" data-dt-idx="1" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="datatable" role="link" data-dt-idx="2" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="datatable" role="link" data-dt-idx="3" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="datatable" role="link" data-dt-idx="4" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="datatable" role="link" data-dt-idx="5" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="datatable_next"><a href="#" aria-controls="datatable" role="link" data-dt-idx="next" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li></ul></div></div></div></div>
+
+                                            </div>
                                         </div>
-                                    </div><!-- end col -->
-                                    <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <div>
-                                            <h5>$44,960</h5>
-                                            <p class="text-muted text-truncate mb-0">Last Week</p>
-                                        </div>
-                                    </div><!-- end col -->
-                                    <div class="col-sm-4">
-                                        <div>
-                                            <h5>$29,142</h5>
-                                            <p class="text-muted text-truncate mb-0">Last Month</p>
-                                        </div>
-                                    </div><!-- end col -->
-                                </div><!-- end row -->
+                                    </div> <!-- end col -->
+                                </div> <!-- end row -->
+
                             </div>
-                        </div>
-                        <div class="card-body py-0 px-2">
-                            <div id="column_line_chart" class="apex-charts" dir="ltr"></div>
-                        </div>
                     </div><!-- end card -->
                 </div>
                 <!-- end col -->
             </div>
             <!-- end row -->
 
-            <div class="row">
-                <div class="col-xl-8">
+            <div class="row" id="users">
+                <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="dropdown float-end">
@@ -217,208 +178,50 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">User Report</a>
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Profit</a>
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item">Action</a>
                                 </div>
                             </div>
 
-                            <h4 class="card-title mb-4">Latest Transactions</h4>
+                            <h4 class="card-title mb-4">Registered Users</h4>
 
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                     <thead class="table-light">
                                         <tr>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Status</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th style="width: 120px;">Salary</th>
+                                            <th>Email</th>
+                                            {{-- <th>Number Of Posts</th> --}}
+                                            <th>View</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead><!-- end thead -->
                                     <tbody>
-                                        <tr>
-                                            <td><h6 class="mb-0">Charles Casey</h6></td>
-                                            <td>Web Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                23
-                                            </td>
-                                            <td>
-                                                04 Apr, 2021
-                                            </td>
-                                            <td>$42,450</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Alex Adams</h6></td>
-                                            <td>Python Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-warning align-middle me-2"></i>Deactive</div>
-                                            </td>
-                                            <td>
-                                                28
-                                            </td>
-                                            <td>
-                                                01 Aug, 2021
-                                            </td>
-                                            <td>$25,060</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Prezy Kelsey</h6></td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                35
-                                            </td>
-                                            <td>
-                                                15 Jun, 2021
-                                            </td>
-                                            <td>$59,350</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Ruhi Fancher</h6></td>
-                                            <td>React Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                25
-                                            </td>
-                                            <td>
-                                                01 March, 2021
-                                            </td>
-                                            <td>$23,700</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Juliet Pineda</h6></td>
-                                            <td>Senior Web Designer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                38
-                                            </td>
-                                            <td>
-                                                01 Jan, 2021
-                                            </td>
-                                            <td>$69,185</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Den Simpson</h6></td>
-                                            <td>Web Designer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-warning align-middle me-2"></i>Deactive</div>
-                                            </td>
-                                            <td>
-                                                21
-                                            </td>
-                                            <td>
-                                                01 Sep, 2021
-                                            </td>
-                                            <td>$37,845</td>
-                                        </tr>
-                                         <!-- end -->
-                                         <tr>
-                                            <td><h6 class="mb-0">Mahek Torres</h6></td>
-                                            <td>Senior Laravel Developer</td>
-                                            <td>
-                                                <div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div>
-                                            </td>
-                                            <td>
-                                                32
-                                            </td>
-                                            <td>
-                                                20 May, 2021
-                                            </td>
-                                            <td>$55,100</td>
-                                        </tr>
-                                         <!-- end -->
+                                        @if (count($users)> 0)
+                            @foreach ($users as $user)
+                            <tr>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td><a href="/admin/dashboard/users/{{$user->id}}"><i class="fa fa-eye text-dark"></i></a></td>
+                                <td><a href="#"><i class="fa fa-edit text-dark"></i></a></td>
+                                <td><a href="#" class="text-dark"><i class="fa fa-trash"></i>Delete</a></td>
+
+                              </tr>
+                            @endforeach
+                        @endif
                                     </tbody><!-- end tbody -->
                                 </table> <!-- end table -->
                             </div>
                         </div><!-- end card -->
                     </div><!-- end card -->
-                </div>
-                <!-- end col -->
-                <div class="col-xl-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="float-end">
-                                <select class="form-select shadow-none form-select-sm">
-                                    <option selected>Apr</option>
-                                    <option value="1">Mar</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Jan</option>
-                                </select>
-                            </div>
-                            <h4 class="card-title mb-4">Monthly Earnings</h4>
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="text-center mt-4">
-                                        <h5>3475</h5>
-                                        <p class="mb-2 text-truncate">Market Place</p>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-4">
-                                    <div class="text-center mt-4">
-                                        <h5>458</h5>
-                                        <p class="mb-2 text-truncate">Last Week</p>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-4">
-                                    <div class="text-center mt-4">
-                                        <h5>9062</h5>
-                                        <p class="mb-2 text-truncate">Last Month</p>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                            </div>
-                            <!-- end row -->
-
-                            <div class="mt-4">
-                                <div id="donut-chart" class="apex-charts"></div>
-                            </div>
-                        </div>
-                    </div><!-- end card -->
-                </div><!-- end col -->
-            </div>
-            <!-- end row -->
         </div>
 
     </div>
     <!-- End Page-content -->
-
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Upcube.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
 </div>
 
