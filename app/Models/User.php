@@ -54,4 +54,10 @@ class User extends Authenticatable
     public function reply(){
         return $this->hasMany('App\Models\DiscussionReply');
     }
+
+    public function isAdmin()
+    {
+        // Assuming 'role' is a column in your users table and 'admin' is the role value for admins
+        return $this->role === 'admin';
+    }
 }

@@ -20,6 +20,12 @@ class PanelDashboard extends Controller
         return view('admin.dashboard', compact('categories', 'discussion', 'forums', 'users' ));
     }
 
+    public function users()
+    {
+        $users =User::latest()->paginate(15);
+        return view('admin.users', compact('users'));
+    }
+
     public function show($id)
     {
         // $latest_Posts = Discussion::where('user_id', auth()->id())->latest()->first();
@@ -31,6 +37,15 @@ class PanelDashboard extends Controller
         $user = User::find($id);
 
         return view('admin.admin_users', compact('user', 'latest_Posts', 'id'));
+    }
+
+    public function profile($id)
+    {
+        $latest_Posts = Discussion::where('user_id', auth()->id())->latest()->first();
+        $latest = Discussion::latest()->first();
+        $user = auth()->user();
+
+        return view('admin.admin_users', compact('user', 'latest_Posts', 'latest'));
     }
 
     public function destroy($id)

@@ -24,7 +24,7 @@
                 </div>
             </div>
             <!-- end page title -->
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -42,7 +42,7 @@
                                     <th rowspan="1" colspan="1" style="width: 27px;">View</th>
                                     <th rowspan="1" colspan="1" style="width: 27px;">Edit</th>
                                     <th rowspan="1" colspan="1" style="width: 27px;">Delete</th>
-                                    
+
                                 </tr>
                                 </thead>
 
@@ -72,21 +72,7 @@
                 </div> <!-- end col -->
             </div> <!-- end row -->
 
-    {{-- <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script>2024 © Yowza.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer> --}}
-    
+
 </div>
 <!-- end main content-->
 

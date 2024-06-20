@@ -78,17 +78,7 @@
             <!-- /.col -->
 
 
-
-
-
-
             <div class="col-md-9">
-
-
-
-
-
-
                 <div class="card">
                     <div class="card-header p-2">
                         <ul class="nav nav-pills black">
@@ -101,19 +91,10 @@
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
 
-
-
-
-
-
-
-
-
-
                                 <!-- Post -->
                                 @if ($latest_Posts)
                                 <div class="post">
-                                    
+
                                     <div class="user-block">
                                         <img class="img-circle img-bordered-sm" height="50" width="50" src="{{asset('backend/profile.png')}}" alt="user image">
                                         <span class="username">
@@ -138,7 +119,7 @@
                                             </a>
                                             @endif
                                         </span>
-                                        
+
                                     </p>
 
                                     <br></br>
@@ -148,9 +129,7 @@
                             @endif
                                 <!-- /.post -->
 
-
-
-
+                            @if ($latest)
                                 <!-- Post -->
                                 <div class="post clearfix">
                                     <div class="user-block">
@@ -190,6 +169,11 @@
                                 </div>
                                 <!-- /.post -->
 
+
+                            @else
+
+                                <h3>No Discussions found!</h3>
+                            @endif
 
                             </div>
 

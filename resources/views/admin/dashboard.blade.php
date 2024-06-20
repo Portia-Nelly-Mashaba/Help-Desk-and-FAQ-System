@@ -208,7 +208,22 @@
                                 <td>{{$user->email}}</td>
                                 <td><a href="/admin/dashboard/users/{{$user->id}}"><i class="fa fa-eye text-dark"></i></a></td>
                                 <td><a href="#"><i class="fa fa-edit text-dark"></i></a></td>
-                                <td><a href="#" class="text-dark"><i class="fa fa-trash"></i>Delete</a></td>
+                                {{-- <td><a href="#" class="text-dark"><i class="fa fa-trash"></i>Delete</a></td> --}}
+                                <td class="delete-cell">
+                                    @if(auth()->user()->isAdmin())
+                                        <form action="{{ route('user.delete', [$user->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-dark" style="border: none; background: none;">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    @else
+                                        <a href="#" class="text-dark" style="border: none; background: none;">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </a>
+                                    @endif
+                                </td>
 
                               </tr>
                             @endforeach

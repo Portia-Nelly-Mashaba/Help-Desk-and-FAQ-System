@@ -121,51 +121,40 @@
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activity">
                                     <!-- Post -->
-                                    @if ($latest_Posts->count() > 0)
-                                    @foreach ($latest_Posts as $post)
-                                    <div class="post">
-                                        <div class="user-block">
-                                            <img class="img-circle img-bordered-sm" height="50" width="50" src="{{ asset('backend/profile.png') }}" alt="user image">
-                                            <span class="username">
-                                                <a href="#">{{$post->user->name}} | </a>
-                                                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                            </span>
-                                            <span class="description">Posted at - {{ $post->created_at }}</span>
-                                        </div>
-                                        <!-- /.user-block -->
-                                        <p>{{ $post->desc }}</p>
-                                        <p>
-                                            <a href="#" class="link-black text-sm"><i class="far fa-eye mr-1"></i>{{ $post->views }} views</a>
-                                            <a href="#" class="link-black text-sm"><i class="far fa-comments mr-1"></i>{{ $post->reply->count() }} replies</a>
-                                            <span class="float-right">
-
-                                                @if (auth()->user() && auth()->user() ->is_admin)
-                                                    <a href="{{route('delete.topic', $post->id)}}"><i class="fa fa-trash text-dark"></i>Delete</a>
-
-                                                    <div class="input-group input-group-sm mb-0">
-                                                        <input class="form-control form-control-sm" name="desc" placeholder="Comment">
-                                                        <div class="input-group-append">
-                                                            <button type="submit" class="btn btn-dark">Reply to the post</button>
-                                                        </div>
-                                                    </div>
-                                                @endif
-
-                                            </span>
-                                        </p>
-                                        <br>
-
-
-                                    </div>
-                                    @endforeach
-                                @else
-                                    <p>{{$user->name}} has not started discussion yet</p>
-
-                                @endif
-
-                                    <!-- /.post -->
-
-
-
+                                    @if ($latest_Posts && $latest_Posts->count() > 0)
+    @foreach ($latest_Posts as $post)
+        <div class="post">
+            <div class="user-block">
+                <img class="img-circle img-bordered-sm" height="50" width="50" src="{{ asset('backend/profile.png') }}" alt="user image">
+                <span class="username">
+                    <a href="#">{{ $post->user->name }} | </a>
+                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                </span>
+                <span class="description">Posted at - {{ $post->created_at }}</span>
+            </div>
+            <!-- /.user-block -->
+            <p>{{ $post->desc }}</p>
+            <p>
+                <a href="#" class="link-black text-sm"><i class="far fa-eye mr-1"></i>{{ $post->views }} views</a>
+                <a href="#" class="link-black text-sm"><i class="far fa-comments mr-1"></i>{{ $post->reply->count() }} replies</a>
+                <span class="float-right">
+                    @if (auth()->user() && auth()->user()->is_admin)
+                        <a href="{{ route('delete.topic', $post->id) }}"><i class="fa fa-trash text-dark"></i>Delete</a>
+                        <div class="input-group input-group-sm mb-0">
+                            <input class="form-control form-control-sm" name="desc" placeholder="Comment">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-dark">Reply to the post</button>
+                            </div>
+                        </div>
+                    @endif
+                </span>
+            </p>
+            <br>
+        </div>
+    @endforeach
+@else
+    <p>{{ $user->name }} has not started discussion yet</p>
+@endif
 
 
                                     <!-- /.post -->
@@ -192,7 +181,7 @@
                                 <div class="tab-pane" id="settings">
 
 
-                                    <form action="{{ route('update.user', $id)}}" method="POST" class="form-horizontal">
+                                    <form action="{{ route('update.user', ['id' => auth()->id()])}}" method="POST" class="form-horizontal">
                                         @csrf
                                         <div class="form-group row">
                                             <label for="inputName" class="col-sm-2 col-form-label">Name</label>

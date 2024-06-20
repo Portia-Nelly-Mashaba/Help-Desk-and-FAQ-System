@@ -83,6 +83,9 @@ Route::prefix('admin')->group(function () {
     //Users
     Route::get('/dashboard/users/{id}', [App\Http\Controllers\admin\PanelDashboard::class, 'show'])->name('user');
     Route::post('/dashboard/users/{id}', [App\Http\Controllers\admin\PanelDashboard::class, 'destroy'])->name('user.delete');
+    Route::get('/dashboard/users', [App\Http\Controllers\admin\PanelDashboard::class, 'users'])->name('users');
+    //admin Profile
+    Route::get('/profile/{id}', [App\Http\Controllers\admin\PanelDashboard::class, 'profile'])->name('admin.profile');
 });
 
 
