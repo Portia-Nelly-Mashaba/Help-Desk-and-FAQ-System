@@ -52,10 +52,10 @@
         </label>
       </div>
 
-      <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
+      <button type="submit" class="btn btn-dark mt-2 mb-lg-5">
         Create Topic
       </button>
-      <button type="reset" class="btn btn-danger mt-2 mb-lg-5">Reset</button>
+      <button type="reset" class="btn btn-dark mt-2 mb-lg-5">Reset</button>
     </form>
     <div></div>
 

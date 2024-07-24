@@ -126,10 +126,10 @@
           rows="10"
           required
         ></textarea>
-        <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
+        <button type="submit" class="btn btn-dark mt-2 mb-lg-5">
           Submit reply
         </button>
-        <button type="reset" class="btn btn-danger mt-2 mb-lg-5">
+        <button type="reset" class="btn btn-dark mt-2 mb-lg-5">
           Reset
         </button>
       </div>

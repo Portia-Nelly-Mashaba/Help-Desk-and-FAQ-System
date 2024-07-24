@@ -59,9 +59,7 @@ class FrontendController extends Controller
 
     public function profile($id)
     {
-        $latest_Posts = Discussion::where('user_id', id)->latest()->first();
-        $latest = Discussion::lastest()->first();
-        $user = User::find($id);
-        return view('user_profile', compact('user'));
+        $user = User::with('topics', 'reply')->find($id);
+        return view('forum_user.user_profile', compact('user'));
     }
 }
