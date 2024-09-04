@@ -143,9 +143,7 @@
                                     <!-- /.user-block -->
                                     @if ($latest)
                                         <p>{{$latest->desc}}</p>
-                                    @else
-                                        <p>There are no discussions yet</p>
-                                    @endif
+
 
                                     <form  class="form-horizontal" action="{{route('reply.discussion', $latest->id)}}" method="POST">
                                         @csrf
@@ -153,7 +151,9 @@
                                             <p>
                                                 <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
                                                 <span class="float-right">
-                                                    <a href="#" class="link-black text-sm">
+                                    @else
+                                        <p>There are no discussions yet</p>
+                                    @endif                <a href="#" class="link-black text-sm">
                                                         <i class="far fa-comments mr-1"></i> Comments (5)
                                                     </a>
                                                 </span>
